@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadAllBlogPosts } from '../../data/blog-posts';
+
+const allPosts = loadAllBlogPosts();
+const categories = [...new Set(allPosts.map(p => p.category || 'Technology'))].sort();
+---
+<BaseLayout title="Blog | Prashanth Kumar Kadasi" currentPath="/blog">
+<div class="container" style="position: relative; z-index: 1;">
+    <div class="row">
+        <div class="col-12">
+            <h2><i class="fas fa-blog"
+                    style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                Blog</h2>
+            <p class="mb-3">Thoughts on AI, data engineering, and building things that matter.</p>
+        </div>
+    </div>
+
+    {categories.length > 0 && (
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="blog-filter-bar">
+                <button class="blog-filter-pill active" data-category="all" onclick="filterCategory('all', this)">
+                    <i class="fas fa-th"></i> All
+                    <span class="blog-filter-count">{allPosts.length}</span>
+                </button>
+                {categories.map((cat) => (
+                    <button class="blog-filter-pill" data-category={cat} onclick={`filterCategory('${cat}', this)`}>
+                        {cat}
+                    </button>
+                ))}
+            </div>
+            <div class="blog-showing" id="blog-showing">
+                Showing <strong id="visible-count">{allPosts.length}</strong> of {allPosts.length} posts
+            </div>
+        </div>
+    </div>
+    )}
+
+    <div class="row" id="blog-grid">
+        {allPosts.map((post) => (
+            <div class="col-12 col-md-6 col-lg-4 mb-4 blog-card-wrapper"
+                data-category={post.category || 'Technology'}>
+                <a href={`/blog/${post.slug}`} style="text-decoration: none;">
+                    <div class="card blog-card h-100">
+                        <div class="card-body">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i> {post.date}
+                                    {post.author && (
+                                        <span style="display: inline-block; background: var(--accent-gradient); color: white; padding: 1px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 600; margin-left: 0.4rem; vertical-align: middle;">
+                                            <i class="fas fa-robot" style="margin-right: 3px;"></i>{post.author}
+                                        </span>
+                                    )}
+                                </span>
+                                <span class="blog-category-badge">{post.category || 'Technology'}</span>
+                            </div>
+                            <h5 style="margin-top: 0.25rem; color: var(--text-primary);">{post.title}</h5>
+                            <p>{post.excerpt}</p>
+                            <div>
+                                {post.tags.map((tag) => (
+                                    <span class="blog-tag">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        ))}
+    </div>
+
+    {allPosts.length === 0 && (
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-pen-fancy" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 1rem;"></i>
+                    <h4>Coming Soon!</h4>
+                    <p>Blog posts are on the way. Check back soon for articles on AI, data, and development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    )}
+</div>
+
+<script is:inline>
+    function filterCategory(category, btn) {
+        document.querySelectorAll('.blog-filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cards = document.querySelectorAll('.blog-card-wrapper');
+        let visible = 0;
+
+        cards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = '';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                visible++;
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => { card.style.display = 'none'; }, 250);
+            }
+        });
+
+        document.getElementById('visible-count').textContent = visible;
+    }
+</script>
+</BaseLayout>
