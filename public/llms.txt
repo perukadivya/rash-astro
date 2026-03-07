@@ -1,0 +1,47 @@
+# Prashanth Kumar Kadasi
+
+> Data Analyst & AI Developer specializing in LLMs, Python, Astro, and building AI tools for everyday life.
+
+I build intelligent applications and use AI to improve everyday life. From fine-tuning 20B AI models to creating birthday apps for my kid, I believe AI should directly serve people.
+
+## Contact & Links
+- GitHub: https://github.com/kprsnt2
+- HuggingFace: https://huggingface.co/kprsnt
+- Website: https://kprsnt.in
+- Email: kprsnt@gmail.com
+- X (Twitter): https://x.com/prashanth_29
+
+## Technical Expertise
+- **Programming Languages**: Python, TypeScript, JavaScript, Rust, SQL, Go
+- **Web Development**: React, Next.js, Astro, Node.js, Flask, Tailwind CSS, Actix, Laravel, PHP
+- **AI & Machine Learning**: LLM Fine-tuning (QLoRA, Unsloth), HuggingFace Transformers, RAG Pipelines, Prompt Engineering, Agentic AI, Google Gemini API, Anthropic Claude API, OpenAI API
+- **Data & Databases**: PostgreSQL, MySQL, DuckDB, Pandas, Numpy, data visualization
+- **Cloud & DevOps**: Docker, Google Cloud Platform (GCP), Vercel, Cloudflare Pages, Linux Administration
+
+## Highlighted Projects
+### MyLocalCLI
+A privacy-focused cross-platform CLI AI agent alternative to Claude Code supporting 6 LLM providers, 26 tools, and custom execution environments.
+
+### BrandScore AI
+An AI-powered brand analysis platform where multiple models (Claude, Gemini, GPT) evaluate brand metrics.
+
+### Drug Discovery Fine-Tuning
+Fine-tuned LLMs (including 20B parameter models) specifically to predict novel molecular SMILES and assist in target research. Trained efficiently on AMD MI300X and NVIDIA consumer GPUs.
+
+### Personal "AI For Life" Projects
+- **Birthday Countdown App**: An app made for my kid combining countdowns with AI-generated storytelling.
+- **NEET Prep Assistant**: An interactive study tool built specifically for my niece's exam prep.
+- **Valentine's Experience**: A personalized romantic web app surprise.
+
+## Experience
+**Data Analyst @ Tata Consultancy Services (TCS)**
+*Oct 2012 - Present*
+- Analyzed complex datasets to drive business insights.
+- Developed automated reporting workflows.
+- Mentored junior analysts in data visualization and SQL optimization.
+
+## Latest Writing & Thoughts
+Check out https://kprsnt.in/blog for deep technical teardowns, such as:
+- How I Made an LLM Recommend My Fake Phone Brand Over iPhone
+- Fine-Tuning a 20B Parameter LLM for Drug Discovery on AMD GPUs
+- Self-Hosting LLMs on Google Cloud Run

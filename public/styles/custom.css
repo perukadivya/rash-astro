@@ -159,9 +159,10 @@ p {
 }
 
 .card:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2) !important;
-    border-color: rgba(102, 126, 234, 0.3) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4) !important;
+    border-color: rgba(102, 126, 234, 0.6) !important;
+    z-index: 10;
 }
 
 .card-header {
@@ -617,8 +618,25 @@ p {
     }
 }
 
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
 .fade-in-up {
     animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in-scale {
+    opacity: 0;
+    animation: fadeInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 /* Staggered animation for cards */
@@ -649,6 +667,28 @@ p {
 .row>div:nth-child(6) .card {
     animation-delay: 0.6s;
 }
+
+/* Staggered animation for skill badges */
+.skill-category:nth-child(1) .skill-badge {
+    animation-delay: 0.1s;
+}
+
+.skill-category:nth-child(2) .skill-badge {
+    animation-delay: 0.2s;
+}
+
+.skill-category:nth-child(3) .skill-badge {
+    animation-delay: 0.3s;
+}
+
+.skill-category:nth-child(4) .skill-badge {
+    animation-delay: 0.4s;
+}
+
+.skill-category:nth-child(5) .skill-badge {
+    animation-delay: 0.5s;
+}
+
 
 /* ========== Container ========== */
 .container,

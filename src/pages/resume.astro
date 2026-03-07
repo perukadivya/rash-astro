@@ -37,9 +37,12 @@ import { EXPERIENCE, RESUME_PROJECTS, RESUME_SKILLS } from '../data/resume';
                 <div class="card-header">💼 Experience</div>
                 <div class="card-body">
                     <h5 style="margin-bottom: 0.25rem;">{EXPERIENCE.company}</h5>
-                    <div style="margin-bottom: 1rem;">
-                        <span style="font-weight: 600; color: #667eea;">{EXPERIENCE.role}</span>
-                        <span style="color: #a0a0b0;"> | {EXPERIENCE.period} | {EXPERIENCE.location}</span>
+                    <div style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                        <span style="font-weight: 600; color: var(--accent-blue); font-size: 1.1rem;">{EXPERIENCE.role}</span>
+                        <span style="color: var(--text-secondary); font-size: 0.95rem; background: rgba(255,255,255,0.05); padding: 0.2rem 0.6rem; border-radius: 6px;">
+                            <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>{EXPERIENCE.period} | 
+                            <i class="fas fa-map-marker-alt" style="margin-left: 5px; margin-right: 5px;"></i>{EXPERIENCE.location}
+                        </span>
                     </div>
                     <ul style="padding-left: 1.25rem;">
                         {EXPERIENCE.highlights.map((highlight) => (

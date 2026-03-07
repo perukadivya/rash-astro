@@ -2,17 +2,61 @@
 interface Props {
   title?: string;
   currentPath?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = 'Prashanth Kumar Kadasi | Portfolio', currentPath = '/' } = Astro.props;
+const { 
+  title = 'Prashanth Kumar Kadasi | Data Analyst & AI Developer', 
+  currentPath = '/',
+  description = 'Portfolio of Prashanth Kumar Kadasi - Data Analyst & AI Developer specializing in LLMs, React, Astro, Next.js, Python, and SQL.',
+  image = 'https://kprsnt.in/og-image.png'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://kprsnt.in');
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Prashanth Kumar Kadasi",
+  "url": "https://kprsnt.in",
+  "image": "https://kprsnt.in/og-image.png",
+  "jobTitle": "Data Analyst & AI Developer",
+  "sameAs": [
+    "https://github.com/kprsnt2",
+    "https://huggingface.co/kprsnt"
+  ],
+  "knowsAbout": ["Artificial Intelligence", "Data Analysis", "Python", "Rust", "TypeScript", "React", "Next.js", "Astro", "Large Language Models", "Machine Learning"]
+};
 ---
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Prashanth Kumar Kadasi - Data Analyst & AI Developer Portfolio">
+    <meta name="description" content={description}>
+    <meta name="author" content="Prashanth Kumar Kadasi">
+    <meta name="keywords" content="Prashanth Kumar Kadasi, Data Analyst, AI Developer, Frontend, Backend, Machine Learning, Portfolio">
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
     <title>{title}</title>
+
+    <!-- JSON-LD for LLMs and Search Engines -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml"
